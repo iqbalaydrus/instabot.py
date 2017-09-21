@@ -303,23 +303,24 @@ class InstaBot:
 
     def cleanup(self, *_):
         # Unfollow all bot follow
-        if not self.already_cleaned_up:
-            self.already_cleaned_up = True
-            if self.follow_counter >= self.unfollow_counter:
-                for f in self.bot_follow_list:
-                    log_string = "Trying to unfollow: %s" % (f[0])
-                    self.write_log(log_string)
-                    self.unfollow_on_cleanup(f[0])
-                    sleeptime = random.randint(self.unfollow_break_min,
-                                               self.unfollow_break_max)
-                    log_string = "Pausing for %i seconds... %i of %i" % (
-                        sleeptime, self.unfollow_counter, self.follow_counter)
-                    self.write_log(log_string)
-                    time.sleep(sleeptime)
+        if self.already_cleaned_up:
+            exit(0)
+        self.already_cleaned_up = True
+        if self.follow_counter >= self.unfollow_counter:
+            for f in self.bot_follow_list:
+                log_string = "Trying to unfollow: %s" % (f[0])
+                self.write_log(log_string)
+                self.unfollow_on_cleanup(f[0])
+                sleeptime = random.randint(self.unfollow_break_min,
+                                           self.unfollow_break_max)
+                log_string = "Pausing for %i seconds... %i of %i" % (
+                    sleeptime, self.unfollow_counter, self.follow_counter)
+                self.write_log(log_string)
+                time.sleep(sleeptime)
 
-            # Logout
-            if self.login_status:
-                self.logout()
+        # Logout
+        if self.login_status:
+            self.logout()
         exit(0)
 
     def get_media_id_by_tag(self, tag):
