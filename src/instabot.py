@@ -212,9 +212,13 @@ class InstaBot:
             info = self.s.get(user_id_url)
 
             # prevent error if 'Account of user was deleted or link is invalid
+            if sys.version_info >= (3, 5):
+                from json import JSONDecodeError
+            else:
+                JSONDecodeError = ValueError
             try:
                 all_data = json.loads(info.text)
-            except ValueError as e:
+            except JSONDecodeError as e:
                 self.write_log('Account of user %s was deleted or link is '
                                'invalid' % (user))
             else:
