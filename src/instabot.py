@@ -625,7 +625,7 @@ class InstaBot:
                         log_string = "Trying to unfollow #%i: " % (
                             self.unfollow_counter + 1)
                         self.write_log(log_string)
-                        self.auto_unfollow()
+                        self.unfollow(f[0])
                         self.bot_follow_list.remove(f)
                         self.next_iteration["Unfollow"] = time.time() + \
                                                           self.add_time(self.unfollow_delay)
