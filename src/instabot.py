@@ -212,9 +212,10 @@ class InstaBot:
             info = self.s.get(user_id_url)
 
             # prevent error if 'Account of user was deleted or link is invalid
+            from json import JSONDecodeError
             try:
                 all_data = json.loads(info.text)
-            except ValueError as e:
+            except JSONDecodeError as e:
                 self.write_log('Account of user %s was deleted or link is '
                                'invalid' % (user))
             else:
@@ -625,7 +626,7 @@ class InstaBot:
                         log_string = "Trying to unfollow #%i: " % (
                             self.unfollow_counter + 1)
                         self.write_log(log_string)
-                        self.unfollow(f[0])
+                        self.auto_unfollow()
                         self.bot_follow_list.remove(f)
                         self.next_iteration["Unfollow"] = time.time() + \
                                                           self.add_time(self.unfollow_delay)
