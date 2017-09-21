@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import time
+import json
+import os
 
 from src.check_status import check_status
 from src.feed_scanner import feed_scanner
@@ -8,9 +10,17 @@ from src.follow_protocol import follow_protocol
 from src.instabot import InstaBot
 from src.unfollow_protocol import unfollow_protocol
 
+if os.path.exists("credentials.json"):
+    credentials = json.load(open("credentials.json"))
+else:
+    credentials = {}
+
+username = credentials.get("username", "username")
+password = credentials.get("password", "password")
+
 bot = InstaBot(
-    login="username",
-    password="password",
+    login=username,
+    password=password,
     like_per_day=1000,
     comments_per_day=0,
     tag_list=['follow4follow', 'f4f', 'followme', 'cute', 'fujixt2',
