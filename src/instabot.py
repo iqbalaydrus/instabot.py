@@ -51,9 +51,9 @@ class InstaBot:
     url_media_detail = 'https://www.instagram.com/p/%s/?__a=1'
     url_user_detail = 'https://www.instagram.com/%s/?__a=1'
 
-    user_agent = ("Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 "
-                  "(KHTML, like Gecko) Chrome/48.0.2564.103 Safari/537.36")
-    accept_language = 'ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4'
+    user_agent = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 "
+                  "(KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36")
+    accept_language = 'en-US,en;q=0.8,id;q=0.6'
 
     # If instagram ban you - query return 400 error.
     error_400 = 0
