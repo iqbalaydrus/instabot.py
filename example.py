@@ -23,7 +23,7 @@ bot = InstaBot(
     password=password,
     like_per_day=800,
     comments_per_day=0,
-    tag_list=['follow4follow', 'f4f', 'followme', 'cute', 'fujixt2',
+    tag_list=['follow4follow', 'f4f', 'followme', 'cute', 'fujifilm',
               'terfujilah', 'kavlingfujifilm', 'fujifilmid', 'instagood',
               'agameoftones', 'ig_masterpiece', 'ig_exquisite', 'ig_shotz',
               'global_hotshotz', 'superhubs', 'main_vision', 'master_shots',
